@@ -1,0 +1,165 @@
+---
+title: ShinyとLLMでClinicalTrials.govを分析するツールを作ってみた
+format: 
+  clean-revealjs:
+    footer: "大阪SAS勉強会#12"
+author:
+  - name: Tomoki Nishikawa
+date: 2026-01-28
+---
+
+## ClinicalTrials.gov (CT.gov) とは？
+
+- 世界最大の治験情報データベース
+  - 治験の概要、デザイン、結果、文献リンク 他いろいろ
+- 「他社の薬剤開発状況」「世界のトレンド」などを調べるのに便利
+
+![](https://clinicaltrials.gov/assets/images/ctg-header-logo.svg)
+
+[[ClinicalTrials.gov]{.button}](https://clinicaltrials.gov/)
+
+## CT.gov の活用イメージ
+
+> 「社長、最近○○がアツいらしいですよ」
+
+- 他社の動きや開発トレンドをキャッチ
+- 市場調査や戦略立案に役立つ
+
+::::{.fragment}
+[でも、検索や集計はちょっと面倒]{.bg style="--col:#f4e04d"}
+::::
+
+## ちょっと面倒
+
+- ウェブUIは検索条件が限られる
+- 大量のデータをダウンロードしてエクセルで集計するのは大変
+- 直接データベースを操作できれば楽だけど、書ける人が限られる
+
+## 自然言語で検索・分析できたらうれしい
+
+- 「日本で進行中の高血圧治療薬の治験を一覧して」  
+- 「近年増えてるがん免疫治療をグラフで見せて」  
+
+→ SQLやRを書かずに、[チャットでお話ししながら分析したい]{.bg style="--col:#f4e04d"}
+
+## Aggregate Analysis of ClinicalTrials.gov (AACT) とは？
+
+- CT.govの情報をPostgreSQL形式で公開しているサービス
+  - [Sign up](https://aact.ctti-clinicaltrials.org/users/sign_up)から無料で利用可能
+  - SQLを叩いてCT.govを検索できる！
+
+![](https://aact.ctti-clinicaltrials.org/assets/new_ctti_logo-f9b15908fd2667105067077b3365a0818e373f6dc05deaa96f761aa25c8f4e6c.svg)
+
+[[AACT]{.button}](http://aact.ctti-clinicaltrials.org/)
+
+## AACTのスキーマ
+
+![](https://aact.ctti-clinicaltrials.org/documentation/aact_schema.png)
+
+## ということは
+
+- AACTを使うにはSQLクエリを書く必要
+  - **自然言語→SQL変換** すればいいのでは
+- ついでに、分析にはRを使いたい
+  - **自然言語→Rコード変換** もできれば最高
+
+[LLMとShinyの出番！]{.bg style="--col:#8bd3dd"}
+
+## 実現するためのRパッケージとLLMのAPI
+
+- `ellmer`: RでLLMを動かす
+- `shinychat`: ShinyでLLMとのチャットUIを簡単に実装
+- `Gemini`: Googleアカウントがあれば無料でAPIが使える！
+
+[[ellmer]{.button}](https://ellmer.tidyverse.org/)
+[[shinychat]{.button}](https://posit-dev.github.io/shinychat/)
+
+## 作成したツール
+
+```{=html}
+<iframe width="780" height="500" src="https://nissinbo-ctgov-bot.share.connect.posit.cloud"></iframe>
+```
+
+[[CTgov-bot]{.button}](https://nissinbo-ctgov-bot.share.connect.posit.cloud)
+
+## ツールの動き方のイメージ
+
+1. ShinyでチャットUIを提供
+2. 入力された自然言語をもとにLLMがSQL/Rコードを生成
+3. 生成されたSQL/Rコードを実行し、分析・可視化結果を返す
+
+## 自然言語からSQL/Rコード生成の例 (1/2)
+
+**🗣️ユーザーの入力**  
+日本で実施された高血圧の治験を期間別にカウントして
+
+**🤖 LLMの出力**  
+承知いたしました。日本で開始された高血圧の臨床試験を、開始年別に集計するSQLクエリを実行します。
+
+```sql
+SELECT
+    EXTRACT(YEAR FROM s.start_date) AS start_year,
+    COUNT(s.nct_id) AS study_count
+FROM studies s
+JOIN conditions c ON s.nct_id = c.nct_id
+JOIN countries co ON s.nct_id = co.nct_id
+WHERE c.downcase_name ILIKE '%hypertension%'
+AND co.name = 'Japan'
+AND co.removed = false
+GROUP BY start_year
+ORDER BY start_year;
+```
+
+## 自然言語からSQL/Rコード生成の例 (2/2)
+
+**🗣️ユーザーの入力**: 開始年別の治験数の棒グラフを作成して
+
+**🤖 LLMの出力**: 承知いたしました。
+
+```{r}
+#| eval: false
+#| echo: true
+library(ggplot2)
+
+ggplot(plot_data, aes(x = factor(start_year), y = study_count)) + 
+(省略)
+```
+
+![](image/ctgov_histogram_example.png)
+
+# 👍
+
+## Geminiに与えたシステムプロンプト
+
+### こんなことをGeminiに伝えました
+
+- 目的: 治験データの検索・分析・可視化を支援
+- 環境: AACT接続、SQL/Rコードが実行可能であること
+- 動作方針
+  - 小さなステップで進め、都度説明を添える
+  - `ggplot2` を用いて一貫した可視化を行う
+  - SQLは ILIKE 検索・nct_id 結合を基本とし、実行結果は即時表示
+  - セキュリティ上、ローカルファイルや外部操作は実行しない
+- AACTの主なデータ構造
+- 分析・可視化の例
+
+## 開発・デプロイまで全部無料
+
+- **GitHub Copilot**: VS Codeでコード補完とvibe coding
+  - 学生はPro版も無料 (今回 Claude Sonnet 4.5 を使いました)
+- **Posit Connect Cloud**: Shinyアプリをデプロイ可能
+  - 無料プランでRAM 4GB
+
+## まとめ
+
+### LLMでデータ分析が変わる
+
+- Shiny の中に LLM を組み込むのは簡単
+- チャットで指示して抽出・分析・可視化ができちゃう
+- Shiny自体も簡単に作成可能
+
+<div style="text-align:center;">
+[**LLM × Shiny = 👍**]{.bg style="--col:#8bd3dd"}
+</div>
+
+# Enjoy 😊
