@@ -6,5 +6,5 @@ website:
   title: "大阪SAS勉強会#12"
   navbar:
     left:
-      - href: osakasas_12.qmd
+      - href: index.qmd
         text: プレゼンテーション
