@@ -1,105 +1,105 @@
 [
   {
-    "objectID": "osakasas_12.html#clinicaltrials.gov-ct.gov-とは",
-    "href": "osakasas_12.html#clinicaltrials.gov-ct.gov-とは",
+    "objectID": "index.html#clinicaltrials.gov-ct.gov-とは",
+    "href": "index.html#clinicaltrials.gov-ct.gov-とは",
     "title": "ShinyとLLMでClinicalTrials.govを分析するツールを作ってみた",
     "section": "ClinicalTrials.gov (CT.gov) とは？",
     "text": "ClinicalTrials.gov (CT.gov) とは？\n\n世界最大の治験情報データベース\n\n治験の概要、デザイン、結果、文献リンク 他いろいろ\n\n「他社の薬剤開発状況」「世界のトレンド」などを調べるのに便利\n\n\nClinicalTrials.gov"
   },
   {
-    "objectID": "osakasas_12.html#ct.gov-の活用イメージ",
-    "href": "osakasas_12.html#ct.gov-の活用イメージ",
+    "objectID": "index.html#ct.gov-の活用イメージ",
+    "href": "index.html#ct.gov-の活用イメージ",
     "title": "ShinyとLLMでClinicalTrials.govを分析するツールを作ってみた",
     "section": "CT.gov の活用イメージ",
     "text": "CT.gov の活用イメージ\n\n「社長、最近○○がアツいらしいですよ」\n\n\n他社の動きや開発トレンドをキャッチ\n市場調査や戦略立案に役立つ\n\n\nでも、検索や集計はちょっと面倒"
   },
   {
-    "objectID": "osakasas_12.html#ちょっと面倒",
-    "href": "osakasas_12.html#ちょっと面倒",
+    "objectID": "index.html#ちょっと面倒",
+    "href": "index.html#ちょっと面倒",
     "title": "ShinyとLLMでClinicalTrials.govを分析するツールを作ってみた",
     "section": "ちょっと面倒",
     "text": "ちょっと面倒\n\nウェブUIは検索条件が限られる\n大量のデータをダウンロードしてエクセルで集計するのは大変\n直接データベースを操作できれば楽だけど、書ける人が限られる"
   },
   {
-    "objectID": "osakasas_12.html#自然言語で検索分析できたらうれしい",
-    "href": "osakasas_12.html#自然言語で検索分析できたらうれしい",
+    "objectID": "index.html#自然言語で検索分析できたらうれしい",
+    "href": "index.html#自然言語で検索分析できたらうれしい",
     "title": "ShinyとLLMでClinicalTrials.govを分析するツールを作ってみた",
     "section": "自然言語で検索・分析できたらうれしい",
     "text": "自然言語で検索・分析できたらうれしい\n\n「日本で進行中の高血圧治療薬の治験を一覧して」\n\n「近年増えてるがん免疫治療をグラフで見せて」\n\n→ SQLやRを書かずに、チャットでお話ししながら分析したい"
   },
   {
-    "objectID": "osakasas_12.html#aggregate-analysis-of-clinicaltrials.gov-aact-とは",
-    "href": "osakasas_12.html#aggregate-analysis-of-clinicaltrials.gov-aact-とは",
+    "objectID": "index.html#aggregate-analysis-of-clinicaltrials.gov-aact-とは",
+    "href": "index.html#aggregate-analysis-of-clinicaltrials.gov-aact-とは",
     "title": "ShinyとLLMでClinicalTrials.govを分析するツールを作ってみた",
     "section": "Aggregate Analysis of ClinicalTrials.gov (AACT) とは？",
     "text": "Aggregate Analysis of ClinicalTrials.gov (AACT) とは？\n\nCT.govの情報をPostgreSQL形式で公開しているサービス\n\nSign upから無料で利用可能\nSQLを叩いてCT.govを検索できる！\n\n\n\nAACT"
   },
   {
-    "objectID": "osakasas_12.html#aactのスキーマ",
-    "href": "osakasas_12.html#aactのスキーマ",
+    "objectID": "index.html#aactのスキーマ",
+    "href": "index.html#aactのスキーマ",
     "title": "ShinyとLLMでClinicalTrials.govを分析するツールを作ってみた",
     "section": "AACTのスキーマ",
     "text": "AACTのスキーマ"
   },
   {
-    "objectID": "osakasas_12.html#ということは",
-    "href": "osakasas_12.html#ということは",
+    "objectID": "index.html#ということは",
+    "href": "index.html#ということは",
     "title": "ShinyとLLMでClinicalTrials.govを分析するツールを作ってみた",
     "section": "ということは",
     "text": "ということは\n\nAACTを使うにはSQLクエリを書く必要\n\n自然言語→SQL変換 すればいいのでは\n\nついでに、分析にはRを使いたい\n\n自然言語→Rコード変換 もできれば最高\n\n\nLLMとShinyの出番！"
   },
   {
-    "objectID": "osakasas_12.html#実現するためのrパッケージとllmのapi",
-    "href": "osakasas_12.html#実現するためのrパッケージとllmのapi",
+    "objectID": "index.html#実現するためのrパッケージとllmのapi",
+    "href": "index.html#実現するためのrパッケージとllmのapi",
     "title": "ShinyとLLMでClinicalTrials.govを分析するツールを作ってみた",
     "section": "実現するためのRパッケージとLLMのAPI",
     "text": "実現するためのRパッケージとLLMのAPI\n\nellmer: RでLLMを動かす\nshinychat: ShinyでLLMとのチャットUIを簡単に実装\nGemini: Googleアカウントがあれば無料でAPIが使える！\n\nellmer shinychat"
   },
   {
-    "objectID": "osakasas_12.html#作成したツール",
-    "href": "osakasas_12.html#作成したツール",
+    "objectID": "index.html#作成したツール",
+    "href": "index.html#作成したツール",
     "title": "ShinyとLLMでClinicalTrials.govを分析するツールを作ってみた",
     "section": "作成したツール",
     "text": "作成したツール\n\nCTgov-bot"
   },
   {
-    "objectID": "osakasas_12.html#ツールの動き方のイメージ",
-    "href": "osakasas_12.html#ツールの動き方のイメージ",
+    "objectID": "index.html#ツールの動き方のイメージ",
+    "href": "index.html#ツールの動き方のイメージ",
     "title": "ShinyとLLMでClinicalTrials.govを分析するツールを作ってみた",
     "section": "ツールの動き方のイメージ",
     "text": "ツールの動き方のイメージ\n\nShinyでチャットUIを提供\n入力された自然言語をもとにLLMがSQL/Rコードを生成\n生成されたSQL/Rコードを実行し、分析・可視化結果を返す"
   },
   {
-    "objectID": "osakasas_12.html#自然言語からsqlrコード生成の例-12",
-    "href": "osakasas_12.html#自然言語からsqlrコード生成の例-12",
+    "objectID": "index.html#自然言語からsqlrコード生成の例-12",
+    "href": "index.html#自然言語からsqlrコード生成の例-12",
     "title": "ShinyとLLMでClinicalTrials.govを分析するツールを作ってみた",
     "section": "自然言語からSQL/Rコード生成の例 (1/2)",
     "text": "自然言語からSQL/Rコード生成の例 (1/2)\n🗣️ユーザーの入力\n日本で実施された高血圧の治験を期間別にカウントして\n🤖 LLMの出力\n承知いたしました。日本で開始された高血圧の臨床試験を、開始年別に集計するSQLクエリを実行します。\nSELECT\n    EXTRACT(YEAR FROM s.start_date) AS start_year,\n    COUNT(s.nct_id) AS study_count\nFROM studies s\nJOIN conditions c ON s.nct_id = c.nct_id\nJOIN countries co ON s.nct_id = co.nct_id\nWHERE c.downcase_name ILIKE '%hypertension%'\nAND co.name = 'Japan'\nAND co.removed = false\nGROUP BY start_year\nORDER BY start_year;"
   },
   {
-    "objectID": "osakasas_12.html#自然言語からsqlrコード生成の例-22",
-    "href": "osakasas_12.html#自然言語からsqlrコード生成の例-22",
+    "objectID": "index.html#自然言語からsqlrコード生成の例-22",
+    "href": "index.html#自然言語からsqlrコード生成の例-22",
     "title": "ShinyとLLMでClinicalTrials.govを分析するツールを作ってみた",
     "section": "自然言語からSQL/Rコード生成の例 (2/2)",
     "text": "自然言語からSQL/Rコード生成の例 (2/2)\n🗣️ユーザーの入力: 開始年別の治験数の棒グラフを作成して\n🤖 LLMの出力: 承知いたしました。\n\nlibrary(ggplot2)\n\nggplot(plot_data, aes(x = factor(start_year), y = study_count)) + \n(省略)"
   },
   {
-    "objectID": "osakasas_12.html#geminiに与えたシステムプロンプト",
-    "href": "osakasas_12.html#geminiに与えたシステムプロンプト",
+    "objectID": "index.html#geminiに与えたシステムプロンプト",
+    "href": "index.html#geminiに与えたシステムプロンプト",
     "title": "ShinyとLLMでClinicalTrials.govを分析するツールを作ってみた",
     "section": "Geminiに与えたシステムプロンプト",
     "text": "Geminiに与えたシステムプロンプト\nこんなことをGeminiに伝えました\n\n目的: 治験データの検索・分析・可視化を支援\n環境: AACT接続、SQL/Rコードが実行可能であること\n動作方針\n\n小さなステップで進め、都度説明を添える\nggplot2 を用いて一貫した可視化を行う\nSQLは ILIKE 検索・nct_id 結合を基本とし、実行結果は即時表示\nセキュリティ上、ローカルファイルや外部操作は実行しない\n\nAACTの主なデータ構造\n分析・可視化の例"
   },
   {
-    "objectID": "osakasas_12.html#開発デプロイまで全部無料",
-    "href": "osakasas_12.html#開発デプロイまで全部無料",
+    "objectID": "index.html#開発デプロイまで全部無料",
+    "href": "index.html#開発デプロイまで全部無料",
     "title": "ShinyとLLMでClinicalTrials.govを分析するツールを作ってみた",
     "section": "開発・デプロイまで全部無料",
     "text": "開発・デプロイまで全部無料\n\nGitHub Copilot: VS Codeでコード補完とvibe coding\n\n学生はPro版も無料 (今回 Claude Sonnet 4.5 を使いました)\n\nPosit Connect Cloud: Shinyアプリをデプロイ可能\n\n無料プランでRAM 4GB"
   },
   {
-    "objectID": "osakasas_12.html#まとめ",
-    "href": "osakasas_12.html#まとめ",
+    "objectID": "index.html#まとめ",
+    "href": "index.html#まとめ",
     "title": "ShinyとLLMでClinicalTrials.govを分析するツールを作ってみた",
     "section": "まとめ",
     "text": "まとめ\nLLMでデータ分析が変わる\n\nShiny の中に LLM を組み込むのは簡単\nチャットで指示して抽出・分析・可視化ができちゃう\nShiny自体も簡単に作成可能\n\n\nLLM × Shiny = 👍"
