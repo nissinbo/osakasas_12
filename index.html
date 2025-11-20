@@ -6,8 +6,8 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.25">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.26">
 
   <meta name="author" content="Tomoki Nishikawa">
   <meta name="dcterms.date" content="2026-01-28">
@@ -287,6 +287,71 @@ Tomoki Nishikawa
 <li><code>Gemini</code>: Googleアカウントがあれば無料でAPIが使える！</li>
 </ul>
 <p><a href="https://ellmer.tidyverse.org/"><span class="button">ellmer</span></a> <a href="https://posit-dev.github.io/shinychat/"><span class="button">shinychat</span></a></p>
+</section>
+<section id="github-copilotを使った実装の流れ" class="slide level2">
+<h2>GitHub Copilotを使った実装の流れ</h2>
+<p><span class="bg" style="--col:#8bd3dd">自然言語で指示 → AIが実装 → 修正を繰り返す</span></p>
+<h3 id="step-1-要件定義書の作成">Step 1: 要件定義書の作成</h3>
+<p>まずは「何を作りたいか」を言葉で伝える</p>
+</section>
+<section id="要件定義の例" class="slide level2">
+<h2>要件定義の例</h2>
+<p><strong>🗣️ GitHub Copilotへの指示</strong></p>
+<blockquote>
+<p>ClinicalTrials.govの情報をSQLクエリで取得できるAACTというサービスがある。</p>
+<p>これとshinychatを使って、自然言語を入力したらそれに合った情報を抽出するSQLクエリを実行して返し、必要に応じてRで処理・可視化するアプリを作って。</p>
+<p>使用するAPIをGeminiに変更して。</p>
+</blockquote>
+<p>→ Copilotが要件定義書を生成してくれる</p>
+</section>
+<section id="step-2-要件定義に基づいて実装" class="slide level2">
+<h2>Step 2: 要件定義に基づいて実装</h2>
+<p><strong>🗣️ 次の指示</strong></p>
+<blockquote>
+<p>この要件定義に従って実装して</p>
+</blockquote>
+<ul>
+<li>Copilotが必要なファイルを生成
+<ul>
+<li><code>app.R</code>: Shinyアプリ本体</li>
+<li><code>server.R</code>: サーバーロジック</li>
+<li><code>ui.R</code>: UIコンポーネント</li>
+</ul></li>
+</ul>
+</section>
+<section id="step-3-エラーや意図と異なる点を修正" class="slide level2">
+<h2>Step 3: エラーや意図と異なる点を修正</h2>
+<p><strong>実行してみると…</strong></p>
+<ul>
+<li>❌ データベース接続エラー</li>
+<li>❌ SQLクエリの実行結果が表示されない</li>
+<li>❌ グラフの見た目がイマイチ</li>
+</ul>
+<p><strong>🗣️ 修正の指示</strong></p>
+<blockquote>
+<p>データベース接続でエラーが出る。環境変数から認証情報を読み込むように変更して</p>
+</blockquote>
+</section>
+<section id="github-copilotの強み" class="slide level2">
+<h2>GitHub Copilotの強み</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="従来の開発">従来の開発</h3>
+<ul>
+<li>ドキュメントを読む</li>
+<li>コードを書く</li>
+<li>デバッグする</li>
+<li>繰り返し…</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h3 id="copilotを使った開発">Copilotを使った開発</h3>
+<ul>
+<li><span class="bg" style="--col:#f4e04d">自然言語で指示</span></li>
+<li>AIが実装</li>
+<li><span class="bg" style="--col:#f4e04d">対話的に修正</span></li>
+<li>完成！</li>
+</ul>
+</div></div>
 </section>
 <section id="作成したツール" class="slide level2">
 <h2>作成したツール</h2>
