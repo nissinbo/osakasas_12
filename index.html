@@ -247,7 +247,7 @@ Tomoki Nishikawa
 </li>
 <li>「近年増えてるがん免疫治療をグラフで見せて」</li>
 </ul>
-<p>→ SQLやRを書かずに、<span class="bg" style="--col:#f4e04d">チャットでお話ししながら分析したい</span></p>
+<p>→ SQLやRやSASを書かずに、<span class="bg" style="--col:#f4e04d">チャットでお話ししながら分析したい</span></p>
 </section>
 <section id="aggregate-analysis-of-clinicaltrials.gov-aact-とは" class="slide level2">
 <h2>Aggregate Analysis of ClinicalTrials.gov (AACT) とは？</h2>
@@ -272,7 +272,7 @@ Tomoki Nishikawa
 <ul>
 <li><strong>自然言語→SQL変換</strong> すればいいのでは</li>
 </ul></li>
-<li>ついでに、分析にはRを使いたい
+<li>分析にはRを使いたい
 <ul>
 <li><strong>自然言語→Rコード変換</strong> もできれば最高</li>
 </ul></li>
@@ -288,11 +288,10 @@ Tomoki Nishikawa
 </ul>
 <p><a href="https://ellmer.tidyverse.org/"><span class="button">ellmer</span></a> <a href="https://posit-dev.github.io/shinychat/"><span class="button">shinychat</span></a></p>
 </section>
-<section id="github-copilotを使った実装の流れ" class="slide level2">
-<h2>GitHub Copilotを使った実装の流れ</h2>
-<p><span class="bg" style="--col:#8bd3dd">自然言語で指示 → AIが実装 → 修正を繰り返す</span></p>
-<h3 id="step-1-要件定義書の作成">Step 1: 要件定義書の作成</h3>
-<p>まずは「何を作りたいか」を言葉で伝える</p>
+<section id="vibe-codingで作った" class="slide level2">
+<h2>Vibe codingで作った</h2>
+<p>今回は VSCode 上の GitHub Copilot を使って実装しました。<br>
+GitHub Copilot、本当に便利です。</p>
 </section>
 <section id="要件定義の例" class="slide level2">
 <h2>要件定義の例</h2>
@@ -304,8 +303,8 @@ Tomoki Nishikawa
 </blockquote>
 <p>→ Copilotが要件定義書を生成してくれる</p>
 </section>
-<section id="step-2-要件定義に基づいて実装" class="slide level2">
-<h2>Step 2: 要件定義に基づいて実装</h2>
+<section id="要件定義に基づいて実装" class="slide level2">
+<h2>要件定義に基づいて実装</h2>
 <p><strong>🗣️ 次の指示</strong></p>
 <blockquote>
 <p>この要件定義に従って実装して</p>
@@ -319,13 +318,13 @@ Tomoki Nishikawa
 </ul></li>
 </ul>
 </section>
-<section id="step-3-エラーや意図と異なる点を修正" class="slide level2">
-<h2>Step 3: エラーや意図と異なる点を修正</h2>
+<section id="エラーや意図と異なる点を修正" class="slide level2">
+<h2>エラーや意図と異なる点を修正</h2>
 <p><strong>実行してみると…</strong></p>
 <ul>
 <li>❌ データベース接続エラー</li>
 <li>❌ SQLクエリの実行結果が表示されない</li>
-<li>❌ グラフの見た目がイマイチ</li>
+<li>❌ アプリの見た目がイマイチ</li>
 </ul>
 <p><strong>🗣️ 修正の指示</strong></p>
 <blockquote>
