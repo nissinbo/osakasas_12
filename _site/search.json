@@ -25,7 +25,7 @@
     "href": "index.html#自然言語で検索分析できたらうれしい",
     "title": "ShinyとLLMでClinicalTrials.govを分析するツールを作ってみた",
     "section": "自然言語で検索・分析できたらうれしい",
-    "text": "自然言語で検索・分析できたらうれしい\n\n「日本で進行中の高血圧治療薬の治験を一覧して」\n\n「近年増えてるがん免疫治療をグラフで見せて」\n\n→ SQLやRを書かずに、チャットでお話ししながら分析したい"
+    "text": "自然言語で検索・分析できたらうれしい\n\n「日本で進行中の高血圧治療薬の治験を一覧して」\n\n「近年増えてるがん免疫治療をグラフで見せて」\n\n→ SQLやRやSASを書かずに、チャットでお話ししながら分析したい"
   },
   {
     "objectID": "index.html#aggregate-analysis-of-clinicaltrials.gov-aact-とは",
@@ -46,7 +46,7 @@
     "href": "index.html#ということは",
     "title": "ShinyとLLMでClinicalTrials.govを分析するツールを作ってみた",
     "section": "ということは",
-    "text": "ということは\n\nAACTを使うにはSQLクエリを書く必要\n\n自然言語→SQL変換 すればいいのでは\n\nついでに、分析にはRを使いたい\n\n自然言語→Rコード変換 もできれば最高\n\n\nLLMとShinyの出番！"
+    "text": "ということは\n\nAACTを使うにはSQLクエリを書く必要\n\n自然言語→SQL変換 すればいいのでは\n\n分析にはRを使いたい\n\n自然言語→Rコード変換 もできれば最高\n\n\nLLMとShinyの出番！"
   },
   {
     "objectID": "index.html#実現するためのrパッケージとllmのapi",
@@ -56,11 +56,11 @@
     "text": "実現するためのRパッケージとLLMのAPI\n\nellmer: RでLLMを動かす\nshinychat: ShinyでLLMとのチャットUIを簡単に実装\nGemini: Googleアカウントがあれば無料でAPIが使える！\n\nellmer shinychat"
   },
   {
-    "objectID": "index.html#github-copilotを使った実装の流れ",
-    "href": "index.html#github-copilotを使った実装の流れ",
+    "objectID": "index.html#vibe-codingで作った",
+    "href": "index.html#vibe-codingで作った",
     "title": "ShinyとLLMでClinicalTrials.govを分析するツールを作ってみた",
-    "section": "GitHub Copilotを使った実装の流れ",
-    "text": "GitHub Copilotを使った実装の流れ\n自然言語で指示 → AIが実装 → 修正を繰り返す\nStep 1: 要件定義書の作成\nまずは「何を作りたいか」を言葉で伝える"
+    "section": "Vibe codingで作った",
+    "text": "Vibe codingで作った\n今回は VSCode 上の GitHub Copilot を使って実装しました。\nGitHub Copilot、本当に便利です。"
   },
   {
     "objectID": "index.html#要件定義の例",
@@ -70,18 +70,18 @@
     "text": "要件定義の例\n🗣️ GitHub Copilotへの指示\n\nClinicalTrials.govの情報をSQLクエリで取得できるAACTというサービスがある。\nこれとshinychatを使って、自然言語を入力したらそれに合った情報を抽出するSQLクエリを実行して返し、必要に応じてRで処理・可視化するアプリを作って。\n使用するAPIをGeminiに変更して。\n\n→ Copilotが要件定義書を生成してくれる"
   },
   {
-    "objectID": "index.html#step-2-要件定義に基づいて実装",
-    "href": "index.html#step-2-要件定義に基づいて実装",
+    "objectID": "index.html#要件定義に基づいて実装",
+    "href": "index.html#要件定義に基づいて実装",
     "title": "ShinyとLLMでClinicalTrials.govを分析するツールを作ってみた",
-    "section": "Step 2: 要件定義に基づいて実装",
-    "text": "Step 2: 要件定義に基づいて実装\n🗣️ 次の指示\n\nこの要件定義に従って実装して\n\n\nCopilotが必要なファイルを生成\n\napp.R: Shinyアプリ本体\nserver.R: サーバーロジック\nui.R: UIコンポーネント"
+    "section": "要件定義に基づいて実装",
+    "text": "要件定義に基づいて実装\n🗣️ 次の指示\n\nこの要件定義に従って実装して\n\n\nCopilotが必要なファイルを生成\n\napp.R: Shinyアプリ本体\nserver.R: サーバーロジック\nui.R: UIコンポーネント"
   },
   {
-    "objectID": "index.html#step-3-エラーや意図と異なる点を修正",
-    "href": "index.html#step-3-エラーや意図と異なる点を修正",
+    "objectID": "index.html#エラーや意図と異なる点を修正",
+    "href": "index.html#エラーや意図と異なる点を修正",
     "title": "ShinyとLLMでClinicalTrials.govを分析するツールを作ってみた",
-    "section": "Step 3: エラーや意図と異なる点を修正",
-    "text": "Step 3: エラーや意図と異なる点を修正\n実行してみると…\n\n❌ データベース接続エラー\n❌ SQLクエリの実行結果が表示されない\n❌ グラフの見た目がイマイチ\n\n🗣️ 修正の指示\n\nデータベース接続でエラーが出る。環境変数から認証情報を読み込むように変更して"
+    "section": "エラーや意図と異なる点を修正",
+    "text": "エラーや意図と異なる点を修正\n実行してみると…\n\n❌ データベース接続エラー\n❌ SQLクエリの実行結果が表示されない\n❌ アプリの見た目がイマイチ\n\n🗣️ 修正の指示\n\nデータベース接続でエラーが出る。環境変数から認証情報を読み込むように変更して"
   },
   {
     "objectID": "index.html#github-copilotの強み",

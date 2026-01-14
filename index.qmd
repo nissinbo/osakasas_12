@@ -40,7 +40,7 @@ date: 2026-01-28
 - 「日本で進行中の高血圧治療薬の治験を一覧して」  
 - 「近年増えてるがん免疫治療をグラフで見せて」  
 
-→ SQLやRを書かずに、[チャットでお話ししながら分析したい]{.bg style="--col:#f4e04d"}
+→ SQLやRやSASを書かずに、[チャットでお話ししながら分析したい]{.bg style="--col:#f4e04d"}
 
 ## Aggregate Analysis of ClinicalTrials.gov (AACT) とは？
 
@@ -60,7 +60,7 @@ date: 2026-01-28
 
 - AACTを使うにはSQLクエリを書く必要
   - **自然言語→SQL変換** すればいいのでは
-- ついでに、分析にはRを使いたい
+- 分析にはRを使いたい
   - **自然言語→Rコード変換** もできれば最高
 
 [LLMとShinyの出番！]{.bg style="--col:#8bd3dd"}
@@ -74,13 +74,10 @@ date: 2026-01-28
 [[ellmer]{.button}](https://ellmer.tidyverse.org/)
 [[shinychat]{.button}](https://posit-dev.github.io/shinychat/)
 
-## GitHub Copilotを使った実装の流れ
+## Vibe codingで作った
 
-[自然言語で指示 → AIが実装 → 修正を繰り返す]{.bg style="--col:#8bd3dd"}
-
-### Step 1: 要件定義書の作成
-
-まずは「何を作りたいか」を言葉で伝える
+今回は VSCode 上の GitHub Copilot を使って実装しました。  
+GitHub Copilot、本当に便利です。
 
 ## 要件定義の例
 
@@ -94,7 +91,7 @@ date: 2026-01-28
 
 → Copilotが要件定義書を生成してくれる
 
-## Step 2: 要件定義に基づいて実装
+## 要件定義に基づいて実装
 
 **🗣️ 次の指示**
 
@@ -105,13 +102,13 @@ date: 2026-01-28
   - `server.R`: サーバーロジック
   - `ui.R`: UIコンポーネント
 
-## Step 3: エラーや意図と異なる点を修正
+## エラーや意図と異なる点を修正
 
 **実行してみると...**
 
 - ❌ データベース接続エラー
 - ❌ SQLクエリの実行結果が表示されない
-- ❌ グラフの見た目がイマイチ
+- ❌ アプリの見た目がイマイチ
 
 **🗣️ 修正の指示**
 
